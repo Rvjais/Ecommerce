@@ -17,7 +17,7 @@ const App = () => {
       <BrowserRouter>
         <Toaster positon="top-right" />
         <Routes>
-          <Route path="/Ecommerce" element={<UserLayout />}>
+            <Route path="/" element={<UserLayout />}>
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
@@ -26,10 +26,10 @@ const App = () => {
             <Route path="product/:id" element={<ProductDetails />} />
             <Route path="checkout" element={<Checkout />} />
             <Route
-              path="order-confirmation"
+              path="/order-confirmation"
               element={<OrderConfirmationPage />}
             />
-            <Route path="orders/:id" element={<OrdersDetailsPage />} />
+            <Route path="/orders/:id" element={<OrdersDetailsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
