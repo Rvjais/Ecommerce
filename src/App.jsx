@@ -11,26 +11,33 @@ import ProductDetails from "./components/Products/ProductDetails";
 import Checkout from "./components/Cart/Checkout";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import OrdersDetailsPage from "./pages/OrdersDetailsPage";
+
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
+      {/* Add the basename prop here, matching your GitHub Pages repository name */}
+      <BrowserRouter basename="/Ecommerce">
         <Toaster positon="top-right" />
         <Routes>
-            <Route path="/" element={<UserLayout />}>
+          {/* The parent route for UserLayout */}
+          <Route path="/" element={<UserLayout />}>
+            {/* Index route for the Home page, matches /Ecommerce/ */}
             <Route index element={<Home />} />
+            {/* Other routes will be relative to /Ecommerce/ */}
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="profile" element={<Profile />} />
             <Route path="collection/:collection" element={<CollectionPage />} />
             <Route path="product/:id" element={<ProductDetails />} />
             <Route path="checkout" element={<Checkout />} />
-            <Route
-              path="/order-confirmation"
-              element={<OrderConfirmationPage />}
-            />
-            <Route path="/orders/:id" element={<OrdersDetailsPage />} />
+            {/* Ensure paths here are relative if they are children of UserLayout,
+                or absolute if they are meant to be outside the UserLayout's scope.
+                Given your current structure, these should be relative. */}
+            <Route path="order-confirmation" element={<OrderConfirmationPage />} />
+            <Route path="orders/:id" element={<OrdersDetailsPage />} />
           </Route>
+          {/* You might want a 404 Not Found route here if no other route matches */}
+          {/* <Route path="*" element={<NotFoundPage />} /> */}
         </Routes>
       </BrowserRouter>
     </div>
